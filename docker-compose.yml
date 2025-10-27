@@ -1,0 +1,21 @@
+
+services:
+  postgres_db:
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - front-end
+
+volumes:
+  postgres-data:
+
+networks:
+  front-end:

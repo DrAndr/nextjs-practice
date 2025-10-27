@@ -1,10 +1,11 @@
 // OLD APPROACH
 
 import {useEffect, useState} from "react";
+import {number, string} from "zod";
 
 const INIT_DATA = {title: '', counter: 0};
 
-export default function Page(props) {
+export default function Page(props: { title: string, counter: number }) {
     console.log('props', props)
     const [data, setData] = useState(props || INIT_DATA)
 
@@ -12,7 +13,9 @@ export default function Page(props) {
     //     setData(props)
     // }, [props])
 
-    return <div onClick={()=>{setData({...data,counter:data.counter+1})}}>
+    return <div onClick={() => {
+        setData({...data, counter: data.counter + 1})
+    }}>
         {data.title}, Counter: {data.counter}
     </div>
 }
